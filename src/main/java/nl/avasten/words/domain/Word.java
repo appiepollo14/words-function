@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQuery;
 
+import java.util.Map;
 import java.util.Optional;
 
 @Entity(name = "words")
@@ -34,6 +35,6 @@ public class Word extends PanacheEntityBase {
     }
 
     public static Optional<Word> findRandomWordByLength(Integer length) {
-        return find("#Word.getRandomByLength", length).firstResultOptional();
+        return find("#Word.getRandomByLength", Map.of("length", length)).firstResultOptional();
     }
 }
